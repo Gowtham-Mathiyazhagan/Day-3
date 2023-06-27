@@ -1,0 +1,58 @@
+Day-3-Task
+
+1.How to compare two JSON have the same properties without order?
+a.let obj1={name :"Person 1", age :5}
+b.let obj2={age: 5, name: "Person 1"}.
+
+Ans:
+let obj1 = {name: "Person 1", age: 5};
+let obj2 = {age: 5, name: "Person 1"};
+
+let str1 = JSON.stringify(obj1);
+let str2 = JSON.stringify(obj2);
+
+let sortedStr1 = str1.split('').sort().join('');
+let sortedStr2 = str2.split('').sort().join('');
+
+if (sortedStr1 === sortedStr2) {
+  console.log("The json objects have the same properties.");
+} else {
+  console.log("The json objects do not have the same properties..")
+}
+
+
+
+2.Use the rest countries API URL https://restcountries.com/v3 tall and display all 
+the country flag  in console.
+
+Ans:
+fetch("https://restcountries.com/v3/all")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((country) => {
+      const flag = country.flags.svg; 
+      console.log(flag);
+    });
+  })
+  
+
+3.Use the same rest countries and print all countries names, regions, sub-region
+and populations.
+
+Ans:
+fetch('https://restcountries.com/v3/all')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(country => {
+      const name = country.name.common;
+      const region = country.region;
+      const subRegion = country.subregion;
+      const population = country.population;
+      
+      console.log('Name:', name);
+      console.log('Region:', region);
+      console.log('Sub-Region:', subRegion);
+      console.log('Population:', population);
+    });
+  })
+_______________________________________________________________________________________________
